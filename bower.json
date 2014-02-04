@@ -5,7 +5,7 @@
     "samtiffin <sam@samtiffin.com>"
   ],
   "description": "Super simple jQuery plugin that ensures elements have matching heights.",
-  "main": "dist/jquery.heightmatch.js",
+  "main": "dist/jquery.heightmatch.min.js",
   "license": "ISC",
   "homepage": "https://github.com/samtiffin/heightmatch",
   "ignore": [
