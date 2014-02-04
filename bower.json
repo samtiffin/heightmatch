@@ -1,0 +1,15 @@
+{
+  "name": "heightmatch",
+  "version": "0.0.1",
+  "authors": [
+    "samtiffin <sam@samtiffin.com>"
+  ],
+  "description": "Super simple jQuery plugin that ensures elements have matching heights.",
+  "main": "dist/jquery.heightmatch.js",
+  "license": "ISC",
+  "homepage": "https://github.com/samtiffin/heightmatch",
+  "ignore": [
+    "**/.*",
+    "node_modules"
+  ]
+}
