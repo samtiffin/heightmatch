@@ -11,5 +11,6 @@
     "unused": true,
     "trailing": true,
     "browser": true,
+    "devel": true,
     "jquery": true
 }
