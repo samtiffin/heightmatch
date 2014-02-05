@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>heightmatch demo</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="../dist/jquery.heightmatch.min.js"></script>
+
+    <style>
+    body {
+        color: #333;
+        background: #eee;
+        font-family: sans-serif;
+        font-size: 14px;
+    }
+
+    section {
+        box-sizing: border-box;
+        background: #fff;
+        margin: 0 auto;
+        padding: 30px;
+        max-width: 960px;
+    }
+
+    .match {
+        box-sizing: border-box;
+        display: inline-block;
+        margin-right: 15px;
+        padding: 15px;
+        background: #ddd;
+        vertical-align: top;
+        width: 20%;
+    }
+    </style>
+</head>
+<body>
+    <section>
+        <h1>Heightmatch Demo</h1>
+
+        <div class="match">
+            <h1>Box One</h1>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, officiis, sint, ipsa impedit repudiandae explicabo in dolorem eaque nobis atque ducimus id natus nemo numquam enim nam veritatis quos blanditiis.</p>
+        </div>
+
+        <div class="match">
+            <h1>Box Two</h1>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, necessitatibus, natus, cumque eius temporibus ipsam adipisci quam cum mollitia molestiae veniam illum pariatur reiciendis soluta sapiente dolore voluptatibus praesentium inventore!</p>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+
+        <div class="match">
+            <h1>Box Three</h1>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, quam facilis quis accusamus officia maxime repellat architecto iusto. At eaque adipisci fuga quos quae nostrum repellendus dignissimos quidem odio culpa?</p>
+        </div>
+
+        <div class="match">
+            <h1>Box Four</h1>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id, repellendus, aspernatur, consectetur, voluptate voluptatibus ab cupiditate laborum odio ipsam architecto ut quo totam officiis molestias iure enim ipsa magnam quaerat.</p>
+        </div>
+    </section>
+
+    <script>
+    $(function() {
+        $('.match').heightmatch();
+    });
+    </script>
+</body>
+</html>
