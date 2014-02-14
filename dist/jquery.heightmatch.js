@@ -1,6 +1,6 @@
 /*!
  * heightmatch - Super simple jQuery plugin that ensures elements have matching heights.
- * @version v0.2.0
+ * @version v0.3.0
  * @link https://github.com/samtiffin/heightmatch
  * @license ISC
  */
