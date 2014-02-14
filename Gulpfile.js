@@ -42,6 +42,10 @@ gulp.task('dist', function() {
         .pipe(gulp.dest(distDir));
 });
 
+gulp.task('glob-rename', function() {
+
+});
+
 gulp.task('build', ['lint', 'uglify', 'dist']);
 
 gulp.task('watch', function() {
