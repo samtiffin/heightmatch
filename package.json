@@ -1,6 +1,6 @@
 {
   "name": "heightmatch",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Super simple jQuery plugin that ensures elements have matching heights.",
   "repository": {
     "type": "git",
