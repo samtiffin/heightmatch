@@ -6,7 +6,6 @@
  */
 /**
 # TODO
-- height match groups
 - refresh on element add/remove
 - watch height of elements ??
 - animation?
@@ -19,17 +18,22 @@
 
         this.options = $.extend({}, Heightmatch.defaults, options);
 
+        this.groups = {};
+
         this.init();
     }
 
     Heightmatch.defaults = {
-        bindResize: false
+        bindResize: false,
+        matchGroups: null
     };
 
     Heightmatch.prototype.init = function() {
         this._bindEvents();
 
-        this.matchHeights();
+        this.groups = this._groupElements();
+
+        this.matchHeights(this.options.matchGroups);
     };
 
     Heightmatch.prototype.destroy = function() {
@@ -38,8 +42,27 @@
         this.unmatchHeights();
     };
 
-    Heightmatch.prototype.matchHeights = function() {
-        this.$elements.height(this._maxHeight(this.$elements));
+
+    Heightmatch.prototype.matchHeights = function( groups ) {
+        var self = this;
+
+        // D:
+        groups = $.map(arguments.length > 1 ? arguments : ($.isArray(groups) ? groups: (typeof groups === 'string' ? [ groups ] : [])), function( val ) {
+            return '_' + val;
+        });
+
+        if (this.groups) {
+            $.each($.map(this.groups, function( value, key) {
+                if (groups.length) {
+                    return $.inArray(key, groups) === -1 ? null : value;
+                }
+                else {
+                    return value;
+                }
+            }), function( key, $elements ) {
+                $elements.height(self._maxHeight($elements));
+            });
+        }
     };
 
     Heightmatch.prototype.unmatchHeights = function() {
@@ -47,11 +70,37 @@
     };
 
     Heightmatch.prototype.refresh = function() {
-        this.matchHeights.apply(this, arguments);
+        var groups = arguments.length ? arguments : this.options.matchGroups;
+
+        this.matchHeights.apply(this, groups);
     };
 
     Heightmatch.prototype._maxHeight = function( $elements ) {
         return Math.max.apply(Math, $elements.map(function( i, element ) {  return $(element).height('').outerHeight(true); }));
+    };
+
+    Heightmatch.prototype._groupElements = function() {
+        var self = this,
+            groups = {}, elementGroups = {};
+
+        this.$elements.each(function() {
+            var $element = $(this),
+                group = $element.data('heightmatchGroup'),
+                key  = group ? '_' + group : 'all';
+
+            if (groups[key]) {
+                groups[key].push($element[0]);
+            }
+            else {
+                groups[key] = [ $element[0] ];
+            }
+        });
+
+        $.each(groups, function( key, $elements ) {
+            elementGroups[key]  = $([]).pushStack($elements);
+        });
+
+        return elementGroups;
     };
 
     Heightmatch.prototype._bindEvents = function() {
@@ -71,7 +120,9 @@
     };
 
     Heightmatch.prototype._resizeHandler = function() {
-        this.matchHeights.apply(this, Array.prototype.slice.call(arguments, 1));
+        var groups = arguments.length > 1 ? Array.prototype.slice.call(arguments, 1) : this.options.matchGroups;
+
+        this.matchHeights.apply(this, groups);
     };
 
     $.fn.heightmatch = function( options ) {
